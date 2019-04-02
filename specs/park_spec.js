@@ -62,10 +62,89 @@ describe('Park', function() {
 
   });
 
-  it('should be able to find the dinosaur that attracts the most visitors');
+  it('should be able to find the dinosaur that attracts the most visitors', function(){
 
-  it('should be able to find all dinosaurs of a particular species');
 
-  it('should be able to remove all dinosaurs of a particular species');
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    const actual = park.mostPopularDinosaur()
+
+    assert.deepStrictEqual(actual, dino1)
+  });
+
+  it('should be able to find all dinosaurs of a particular species', function(){
+
+
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    const actual = park.dinosaursOfSpecies('pteradactyl')
+
+    assert.deepStrictEqual(actual, [dino3])
+  });
+
+  it('should be able to remove all dinosaurs of a particular species', function(){
+
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    park.removeDinosaursOfSpecies('t-rex')
+
+    const actual = park.dinosaurs
+
+    assert .deepStrictEqual(actual, [dino2, dino3])
+
+  });
+
+  it('should be able to calculate the total number of visitors per day', function(){
+
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    const actual = park.totalDailyVisitors()
+
+    assert.strictEqual(actual, 65)
+
+  });
+
+  it('should be able to calculate the total number of visitors per year - open 365 days', function(){
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    const actual = park.totalYearlyVisitors()
+
+    assert.strictEqual(actual, 23725)
+  });
+
+
+  it('should be able to calculate the total revenue from ticket sales for one year', function(){
+
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    const actual = park.totalYearlyTicketSales()
+
+    assert.strictEqual(actual, 474500)
+
+
+  });
+
+  it('should be able to provide an object containing each of the diet types and the number of dinosaurs in the park of that diet type', function(){
+
+    park.addDinosaur(dino1)
+    park.addDinosaur(dino2)
+    park.addDinosaur(dino3)
+
+    const actual = park.dietTypes()
+
+    assert.deepStrictEqual(actual, {'carnivore': 2, 'herbivore': 1})
+  });
 
 });
