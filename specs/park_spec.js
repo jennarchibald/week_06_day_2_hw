@@ -65,8 +65,8 @@ describe('Park', function() {
   it('should be able to find the dinosaur that attracts the most visitors', function(){
 
 
-    park.addDinosaur(dino1)
     park.addDinosaur(dino2)
+    park.addDinosaur(dino1)
     park.addDinosaur(dino3)
 
     const actual = park.mostPopularDinosaur()

@@ -5,34 +5,36 @@ const Park = function(name, price){
 };
 
 Park.prototype.addDinosaur = function(dino){
-  this.dinosaurs.push(dino)
+  this.dinosaurs.push(dino);
 };
 
 Park.prototype.removeDinosaur = function(dino){
-  this.dinosaurs.splice(this.dinosaurs.indexOf(dino), 1)
+  this.dinosaurs.splice(this.dinosaurs.indexOf(dino), 1);
 };
 
 
 Park.prototype.mostPopularDinosaur = function(){
-  let sorted = this.dinosaurs.sort((a, b) => (a.guestsAttractedPerDay < b.guestsAttractedPerDay) ? 1 : -1)
-  return sorted[0]
+  const sorted = this.dinosaurs.sort((a, b) => {
+    return b.guestsAttractedPerDay - a.guestsAttractedPerDay
+  });
+  return sorted[0];
 };
 
 Park.prototype.dinosaursOfSpecies = function(species){
-  let dinos = []
+  const dinos = []
 
-  for (dino of this.dinosaurs){
+  for (const dino of this.dinosaurs){
     if (dino.species === species){
       dinos.push(dino)
     }
   };
 
-  return dinos
+  return dinos;
 };
 
 Park.prototype.removeDinosaursOfSpecies = function(species){
-  let dinos = []
-  for (dino of this.dinosaurs) {
+  const dinos = []
+  for (const dino of this.dinosaurs) {
     if (dino.species !== species) {
       dinos.push(dino)
     };
@@ -42,7 +44,7 @@ Park.prototype.removeDinosaursOfSpecies = function(species){
 
 Park.prototype.totalDailyVisitors = function(){
   let total = 0;
-  for (dino of this.dinosaurs){
+  for (const dino of this.dinosaurs){
     total += dino.guestsAttractedPerDay
   }
   return total;
@@ -57,15 +59,15 @@ Park.prototype.totalYearlyTicketSales = function(){
 };
 
 Park.prototype.dietTypes = function(){
-  let types = {}
-  for (dino of this.dinosaurs){
+  const types = {}
+  for (const dino of this.dinosaurs){
     if (types[dino.diet]){
-      types[dino.diet]+= 1
+      types[dino.diet]+= 1;
     } else {
-      types[dino.diet] = 1
+      types[dino.diet] = 1;
     };
   };
-  return types
+  return types;
 };
 
 
